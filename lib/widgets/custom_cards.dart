@@ -508,7 +508,7 @@ class HealthScoreCard extends StatelessWidget {
                     width: 140,
                     height: 140,
                     child: CircularProgressIndicator(
-                      value: score / 100,
+                      value: score / 10,
                       strokeWidth: 12,
                       backgroundColor: scoreColor.withValues(alpha: 0.15),
                       valueColor:
@@ -528,7 +528,7 @@ class HealthScoreCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'out of 100',
+                        'out of 10',
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey.shade500,
@@ -555,7 +555,7 @@ class HealthScoreCard extends StatelessWidget {
                   Icon(scoreIcon, color: scoreColor, size: 20),
                   const SizedBox(width: 8),
                   Text(
-                    '${analysis.healthLevelLabel} Health Score',
+                    '${analysis.healthLevelLabel} Quality',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,

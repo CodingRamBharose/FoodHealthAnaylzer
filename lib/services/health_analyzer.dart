@@ -6,7 +6,7 @@ enum HealthLevel { high, medium, low }
 /// A comprehensive health analysis result for a food product.
 class HealthAnalysis {
   final HealthLevel healthLevel;
-  final int healthScore; // 0-100
+  final int healthScore; // 0-10
   final double calories;
   final int stepsToburn;
   final int walkingMinutes;
@@ -34,11 +34,11 @@ class HealthAnalysis {
   String get healthLevelLabel {
     switch (healthLevel) {
       case HealthLevel.high:
-        return 'High';
+        return 'Good';
       case HealthLevel.medium:
-        return 'Medium';
+        return 'Average';
       case HealthLevel.low:
-        return 'Low';
+        return 'Poor';
     }
   }
 }
@@ -62,6 +62,7 @@ enum RiskLevel { high, medium, low }
 class HealthAnalyzer {
   static HealthAnalysis analyze(FoodProduct product) {
     final score = _calculateHealthScore(product);
+    final scaledScore = (score / 10.0).round();
     final level = _scoreToLevel(score);
     final steps = _calculateSteps(product.calories);
     final riskIngredients = _identifyRiskIngredients(product);
@@ -71,7 +72,7 @@ class HealthAnalyzer {
 
     return HealthAnalysis(
       healthLevel: level,
-      healthScore: score,
+      healthScore: scaledScore,
       calories: product.calories,
       stepsToburn: steps,
       walkingMinutes: (product.calories / 4.0).round(),
